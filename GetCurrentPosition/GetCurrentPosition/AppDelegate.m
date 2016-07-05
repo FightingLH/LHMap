@@ -5,6 +5,16 @@
 //  Created by lh on 16/7/5.
 //  Copyright © 2016年 lh. All rights reserved.
 //
+/**
+ *  @author 李欢, 16-07-05 13:07:27
+ *
+ *  实现步骤
+ *
+ *  1、打开background modes ->location updates
+ *  2、在plist中添加几个必须要实现的 NSLocationWhenInUseUsageDescription、NSLocationAlwaysUsageDescription、App Transport Security Settings
+ *  3、参照viewController里面的代码即可实现获取当前实时位置
+ */
+
 
 #import "AppDelegate.h"
 #import "ViewController.h"

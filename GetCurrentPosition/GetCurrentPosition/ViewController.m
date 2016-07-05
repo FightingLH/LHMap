@@ -38,18 +38,22 @@
     
     if ([[UIDevice currentDevice].systemVersion floatValue] > 8)
     {
-        /** 请求用户权限：分为：只在前台开启定位  /在后台也可定位， */
-        
-        /** 只在前台开启定位 */
-        //        [self.locationManager requestWhenInUseAuthorization];
-        
+        /**
+         *  @author 李欢, 16-07-05 14:07:39
+         *  请求用户权限：分为：只在前台开启定位 在后台也可定
+         *  只在前台开启定位 [self.locationManager requestWhenInUseAuthorization];
+         */
         /** 后台也可以定位 */
         [self.locationManager requestAlwaysAuthorization];
     }
     
     if ([[UIDevice currentDevice].systemVersion floatValue] > 9)
     {
-        /** iOS9新特性：将允许出现这种场景：同一app中多个location manager：一些只能在前台定位，另一些可在后台定位（并可随时禁止其后台定位）。 */
+        /**
+         *  @author 李欢, 16-07-05 14:07:39
+         *
+         *  iOS9新特性：将允许出现这种场景：同一app中多个location manager：一些只能在前台定位，另一些可在后台定位（并可随时禁止其后台定位）。
+         */
         [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     }
     
