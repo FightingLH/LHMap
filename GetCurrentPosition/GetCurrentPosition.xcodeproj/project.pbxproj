@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB3A983E1D6FCFF7004D380D /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3A983D1D6FCFF7004D380D /* StartViewController.m */; };
 		EB48ED771D2B7F4000B6F37A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED761D2B7F4000B6F37A /* main.m */; };
 		EB48ED7A1D2B7F4000B6F37A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED791D2B7F4000B6F37A /* AppDelegate.m */; };
 		EB48ED7D1D2B7F4000B6F37A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED7C1D2B7F4000B6F37A /* ViewController.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB3A983C1D6FCFF7004D380D /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		EB3A983D1D6FCFF7004D380D /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		EB48ED721D2B7F4000B6F37A /* GetCurrentPosition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetCurrentPosition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB48ED761D2B7F4000B6F37A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EB48ED781D2B7F4000B6F37A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +81,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB3A983B1D6FCF62004D380D /* 自定义大头针 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "自定义大头针";
+			sourceTree = "<group>";
+		};
 		EB48ED691D2B7F4000B6F37A = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +111,11 @@
 		EB48ED741D2B7F4000B6F37A /* GetCurrentPosition */ = {
 			isa = PBXGroup;
 			children = (
+				EB3A983B1D6FCF62004D380D /* 自定义大头针 */,
 				EB48ED781D2B7F4000B6F37A /* AppDelegate.h */,
 				EB48ED791D2B7F4000B6F37A /* AppDelegate.m */,
+				EB3A983C1D6FCFF7004D380D /* StartViewController.h */,
+				EB3A983D1D6FCFF7004D380D /* StartViewController.m */,
 				EB48ED7B1D2B7F4000B6F37A /* ViewController.h */,
 				EB48ED7C1D2B7F4000B6F37A /* ViewController.m */,
 				EB48ED7E1D2B7F4000B6F37A /* Main.storyboard */,
@@ -276,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB48ED7D1D2B7F4000B6F37A /* ViewController.m in Sources */,
+				EB3A983E1D6FCFF7004D380D /* StartViewController.m in Sources */,
 				EB48ED7A1D2B7F4000B6F37A /* AppDelegate.m in Sources */,
 				EB48ED771D2B7F4000B6F37A /* main.m in Sources */,
 			);
@@ -503,6 +517,7 @@
 				EB48EDA11D2B7F4000B6F37A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB48EDA21D2B7F4000B6F37A /* Build configuration list for PBXNativeTarget "GetCurrentPositionTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +526,7 @@
 				EB48EDA41D2B7F4000B6F37A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB48EDA51D2B7F4000B6F37A /* Build configuration list for PBXNativeTarget "GetCurrentPositionUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +535,7 @@
 				EB48EDA71D2B7F4000B6F37A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
