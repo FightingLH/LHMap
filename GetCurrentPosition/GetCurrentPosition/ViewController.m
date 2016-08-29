@@ -64,23 +64,9 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     CLLocation *loc = [locations objectAtIndex:0];
-    
     NSLog(@"经纬度  %f  %f ",loc.coordinate.latitude,loc.coordinate.longitude);
     NSString *str = [NSString stringWithFormat:@"我的实时位置坐标经度%f纬度%f",loc.coordinate.latitude,loc.coordinate.longitude];
-    
     ALERT_MSG(str);
-    
-    //    NSURLSession *session = [NSURLSession sharedSession];
-    //
-    //    NSURLSessionDataTask *task = [session dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ac.ybjk.com/ua.php"]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    //        //        NSLog(@"response  %@",response);
-    //
-    //        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    //
-    //        NSLog(@"result %@",result);
-    //    }];
-    //
-    //    [task resume];
 }
 
 - (void)didReceiveMemoryWarning {

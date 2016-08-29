@@ -7,7 +7,7 @@
 //
 
 #import "StartViewController.h"
-
+#import "ViewController.h"
 @interface StartViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//数组
@@ -26,7 +26,7 @@
 
 #pragma mark -数组
 -(void)prepareDataArray{
-    self.dataArray = @[@"使用时定位(自定义大头针)",@"固定点路径规划(自定义大头针)",@"前后台定位",@"通过位置进行导航"];
+    self.dataArray = @[@"使用时定位(自定义大头针)",@"固定点路径规划(自定义大头针)",@"前后台定位(并且传事实位置)",@"通过位置进行导航"];
 }
 
 -(void)uiConfig{
@@ -64,7 +64,10 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    if (indexPath.row == 2) {//前后台定位并且上传实时位置
+        ViewController *v1 = [[ViewController alloc]init];
+        [self.navigationController pushViewController:v1 animated:YES];
+    }
 }
 /*
  #pragma mark - Navigation
