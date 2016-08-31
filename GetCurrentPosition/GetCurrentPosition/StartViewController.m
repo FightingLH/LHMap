@@ -9,6 +9,7 @@
 #import "StartViewController.h"
 #import "ViewController.h"
 #import "ViewController01.h"
+#import "ViewController02.h"
 @interface StartViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//数组
@@ -71,9 +72,13 @@
     }else if(indexPath.row == 1){
         ViewController01 *v1 = [[ViewController01 alloc]init];
         [self.navigationController pushViewController:v1 animated:YES];
-
+    }else if(indexPath.row == 3){
+        ViewController02 *v2 = [[ViewController02 alloc]init];
+        [self.navigationController pushViewController:v2 animated:YES];
     }
 }
+
+
 /*
  #pragma mark - Navigation
  

@@ -19,6 +19,7 @@
 		EB515D551D768753002CF24E /* LHAnnotationSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D541D768753002CF24E /* LHAnnotationSetting.m */; };
 		EB515D581D76876C002CF24E /* LHDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D571D76876C002CF24E /* LHDrawView.m */; };
 		EB515D5B1D76879E002CF24E /* LHAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D5A1D76879E002CF24E /* LHAnnotationView.m */; };
+		EB515D5F1D769F36002CF24E /* ViewController02.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D5E1D769F36002CF24E /* ViewController02.m */; };
 		EB5CF0DA1D73D97C00A4BBBA /* ViewController01.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		EB515D571D76876C002CF24E /* LHDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDrawView.m; sourceTree = "<group>"; };
 		EB515D591D76879E002CF24E /* LHAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAnnotationView.h; sourceTree = "<group>"; };
 		EB515D5A1D76879E002CF24E /* LHAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAnnotationView.m; sourceTree = "<group>"; };
+		EB515D5D1D769F36002CF24E /* ViewController02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController02.h; sourceTree = "<group>"; };
+		EB515D5E1D769F36002CF24E /* ViewController02.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController02.m; sourceTree = "<group>"; };
 		EB5CF0D81D73D97C00A4BBBA /* ViewController01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController01.h; sourceTree = "<group>"; };
 		EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController01.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +187,8 @@
 		EB515D521D768663002CF24E /* 搜索路径 */ = {
 			isa = PBXGroup;
 			children = (
+				EB515D5D1D769F36002CF24E /* ViewController02.h */,
+				EB515D5E1D769F36002CF24E /* ViewController02.m */,
 			);
 			name = "搜索路径";
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				EB515D551D768753002CF24E /* LHAnnotationSetting.m in Sources */,
 				EB515D581D76876C002CF24E /* LHDrawView.m in Sources */,
 				EB48ED7A1D2B7F4000B6F37A /* AppDelegate.m in Sources */,
+				EB515D5F1D769F36002CF24E /* ViewController02.m in Sources */,
 				EB48ED771D2B7F4000B6F37A /* main.m in Sources */,
 				EB515D5B1D76879E002CF24E /* LHAnnotationView.m in Sources */,
 			);
