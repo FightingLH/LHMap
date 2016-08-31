@@ -12,10 +12,13 @@
 		EB48ED7A1D2B7F4000B6F37A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED791D2B7F4000B6F37A /* AppDelegate.m */; };
 		EB48ED7D1D2B7F4000B6F37A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED7C1D2B7F4000B6F37A /* ViewController.m */; };
 		EB48ED801D2B7F4000B6F37A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB48ED7E1D2B7F4000B6F37A /* Main.storyboard */; };
-		EB48ED821D2B7F4000B6F37A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB48ED811D2B7F4000B6F37A /* Assets.xcassets */; };
+		EB48ED821D2B7F4000B6F37A /* imagessets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB48ED811D2B7F4000B6F37A /* imagessets.xcassets */; };
 		EB48ED851D2B7F4000B6F37A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB48ED831D2B7F4000B6F37A /* LaunchScreen.storyboard */; };
 		EB48ED901D2B7F4000B6F37A /* GetCurrentPositionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED8F1D2B7F4000B6F37A /* GetCurrentPositionTests.m */; };
 		EB48ED9B1D2B7F4000B6F37A /* GetCurrentPositionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB48ED9A1D2B7F4000B6F37A /* GetCurrentPositionUITests.m */; };
+		EB515D551D768753002CF24E /* LHAnnotationSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D541D768753002CF24E /* LHAnnotationSetting.m */; };
+		EB515D581D76876C002CF24E /* LHDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D571D76876C002CF24E /* LHDrawView.m */; };
+		EB515D5B1D76879E002CF24E /* LHAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB515D5A1D76879E002CF24E /* LHAnnotationView.m */; };
 		EB5CF0DA1D73D97C00A4BBBA /* ViewController01.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +49,7 @@
 		EB48ED7B1D2B7F4000B6F37A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EB48ED7C1D2B7F4000B6F37A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EB48ED7F1D2B7F4000B6F37A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EB48ED811D2B7F4000B6F37A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB48ED811D2B7F4000B6F37A /* imagessets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = imagessets.xcassets; sourceTree = "<group>"; };
 		EB48ED841D2B7F4000B6F37A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB48ED861D2B7F4000B6F37A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB48ED8B1D2B7F4000B6F37A /* GetCurrentPositionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetCurrentPositionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +58,12 @@
 		EB48ED961D2B7F4000B6F37A /* GetCurrentPositionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetCurrentPositionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB48ED9A1D2B7F4000B6F37A /* GetCurrentPositionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetCurrentPositionUITests.m; sourceTree = "<group>"; };
 		EB48ED9C1D2B7F4000B6F37A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB515D531D768753002CF24E /* LHAnnotationSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAnnotationSetting.h; sourceTree = "<group>"; };
+		EB515D541D768753002CF24E /* LHAnnotationSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAnnotationSetting.m; sourceTree = "<group>"; };
+		EB515D561D76876C002CF24E /* LHDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDrawView.h; sourceTree = "<group>"; };
+		EB515D571D76876C002CF24E /* LHDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDrawView.m; sourceTree = "<group>"; };
+		EB515D591D76879E002CF24E /* LHAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAnnotationView.h; sourceTree = "<group>"; };
+		EB515D5A1D76879E002CF24E /* LHAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAnnotationView.m; sourceTree = "<group>"; };
 		EB5CF0D81D73D97C00A4BBBA /* ViewController01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController01.h; sourceTree = "<group>"; };
 		EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController01.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +96,12 @@
 		EB3A983B1D6FCF62004D380D /* 自定义大头针 */ = {
 			isa = PBXGroup;
 			children = (
+				EB515D531D768753002CF24E /* LHAnnotationSetting.h */,
+				EB515D541D768753002CF24E /* LHAnnotationSetting.m */,
+				EB515D561D76876C002CF24E /* LHDrawView.h */,
+				EB515D571D76876C002CF24E /* LHDrawView.m */,
+				EB515D591D76879E002CF24E /* LHAnnotationView.h */,
+				EB515D5A1D76879E002CF24E /* LHAnnotationView.m */,
 			);
 			name = "自定义大头针";
 			sourceTree = "<group>";
@@ -115,16 +130,15 @@
 			isa = PBXGroup;
 			children = (
 				EB3A983B1D6FCF62004D380D /* 自定义大头针 */,
-				EB48ED781D2B7F4000B6F37A /* AppDelegate.h */,
+				EB515D521D768663002CF24E /* 搜索路径 */,
+				EB515D511D768653002CF24E /* 路径规划 */,
+				EB515D5C1D768BE9002CF24E /* 前后台获取用户位置 */,
 				EB48ED791D2B7F4000B6F37A /* AppDelegate.m */,
+				EB48ED781D2B7F4000B6F37A /* AppDelegate.h */,
 				EB3A983C1D6FCFF7004D380D /* StartViewController.h */,
 				EB3A983D1D6FCFF7004D380D /* StartViewController.m */,
-				EB48ED7B1D2B7F4000B6F37A /* ViewController.h */,
-				EB48ED7C1D2B7F4000B6F37A /* ViewController.m */,
-				EB5CF0D81D73D97C00A4BBBA /* ViewController01.h */,
-				EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */,
 				EB48ED7E1D2B7F4000B6F37A /* Main.storyboard */,
-				EB48ED811D2B7F4000B6F37A /* Assets.xcassets */,
+				EB48ED811D2B7F4000B6F37A /* imagessets.xcassets */,
 				EB48ED831D2B7F4000B6F37A /* LaunchScreen.storyboard */,
 				EB48ED861D2B7F4000B6F37A /* Info.plist */,
 				EB48ED751D2B7F4000B6F37A /* Supporting Files */,
@@ -156,6 +170,31 @@
 				EB48ED9C1D2B7F4000B6F37A /* Info.plist */,
 			);
 			path = GetCurrentPositionUITests;
+			sourceTree = "<group>";
+		};
+		EB515D511D768653002CF24E /* 路径规划 */ = {
+			isa = PBXGroup;
+			children = (
+				EB5CF0D81D73D97C00A4BBBA /* ViewController01.h */,
+				EB5CF0D91D73D97C00A4BBBA /* ViewController01.m */,
+			);
+			name = "路径规划";
+			sourceTree = "<group>";
+		};
+		EB515D521D768663002CF24E /* 搜索路径 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "搜索路径";
+			sourceTree = "<group>";
+		};
+		EB515D5C1D768BE9002CF24E /* 前后台获取用户位置 */ = {
+			isa = PBXGroup;
+			children = (
+				EB48ED7B1D2B7F4000B6F37A /* ViewController.h */,
+				EB48ED7C1D2B7F4000B6F37A /* ViewController.m */,
+			);
+			name = "前后台获取用户位置";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB48ED851D2B7F4000B6F37A /* LaunchScreen.storyboard in Resources */,
-				EB48ED821D2B7F4000B6F37A /* Assets.xcassets in Resources */,
+				EB48ED821D2B7F4000B6F37A /* imagessets.xcassets in Resources */,
 				EB48ED801D2B7F4000B6F37A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,8 +335,11 @@
 				EB5CF0DA1D73D97C00A4BBBA /* ViewController01.m in Sources */,
 				EB48ED7D1D2B7F4000B6F37A /* ViewController.m in Sources */,
 				EB3A983E1D6FCFF7004D380D /* StartViewController.m in Sources */,
+				EB515D551D768753002CF24E /* LHAnnotationSetting.m in Sources */,
+				EB515D581D76876C002CF24E /* LHDrawView.m in Sources */,
 				EB48ED7A1D2B7F4000B6F37A /* AppDelegate.m in Sources */,
 				EB48ED771D2B7F4000B6F37A /* main.m in Sources */,
+				EB515D5B1D76879E002CF24E /* LHAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
