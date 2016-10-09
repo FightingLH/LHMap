@@ -7,6 +7,7 @@
 //
 
 #import "ViewController02.h"
+#import <MapKit/MapKit.h>
 #define APPLICATION             [UIApplication sharedApplication]
 @interface ViewController02 ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self toMapView];
+  
+}
+
+-(void)toMapView{
+
 }
 
 - (void)didReceiveMemoryWarning {
