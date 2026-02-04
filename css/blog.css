@@ -29,6 +29,7 @@ html {
   font-size: 14px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -40,6 +41,7 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* 确保页面内容层级 */
@@ -88,9 +90,11 @@ a:hover {
 
 /* 顶部窄条 */
 .tb-top-util {
+  width: 100%;
   background: var(--tb-bg);
   border-bottom: 1px solid var(--tb-border);
   padding: 6px 0;
+  box-sizing: border-box;
 }
 .tb-top-util .tb-wrap {
   display: flex;
@@ -117,12 +121,14 @@ a:hover {
 
 /* 主头部：白底 Logo | 搜索 | 购物车 */
 .tb-header {
+  width: 100%;
   background: var(--tb-surface);
   box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 .tb-header-inner {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 24px;
   min-height: 60px;
   padding-top: 12px;
@@ -197,8 +203,10 @@ a:hover {
 
 /* 分类导航 */
 .tb-nav {
+  width: 100%;
   background: var(--tb-surface);
   border-bottom: 1px solid var(--tb-border);
+  box-sizing: border-box;
 }
 .tb-nav .tb-wrap {
   display: flex;
@@ -223,6 +231,7 @@ a:hover {
 
 /* 主内容区：灰底 */
 .tb-main {
+  width: 100%;
   background: var(--tb-bg);
   padding-bottom: 40px;
   min-height: 50vh;
@@ -230,6 +239,7 @@ a:hover {
 
 /* 大横幅 */
 .tb-banner {
+  width: 100%;
   background: var(--tb-surface);
   border-bottom: 1px solid var(--tb-border);
   padding: 16px 0;
@@ -244,6 +254,8 @@ a:hover {
   background: linear-gradient(135deg, #fff9f5 0%, #fff0e6 100%);
   border-radius: var(--radius);
   border: 1px solid rgba(255,103,0,0.12);
+  width: 100%;
+  box-sizing: border-box;
 }
 @media (max-width: 900px) {
   .tb-banner-inner {
@@ -269,7 +281,9 @@ a:hover {
 
 /* 商品区块 */
 .tb-content {
+  width: 100%;
   padding-top: 20px;
+  box-sizing: border-box;
 }
 .tb-section-title {
   font-size: 16px;
@@ -372,18 +386,38 @@ a:hover {
 
 /* 淘宝式页脚 */
 .tb-footer {
+  width: 100%;
   background: var(--tb-surface);
   border-top: 1px solid var(--tb-border);
   padding: 24px 0;
   text-align: center;
   font-size: 12px;
   color: var(--tb-text-muted);
+  box-sizing: border-box;
 }
 .tb-footer a {
   color: var(--tb-text-muted);
 }
 .tb-footer a:hover {
   color: var(--tb-orange);
+}
+
+/* 桌面端：确保布局不换行、宽度正确 */
+@media (min-width: 769px) {
+  .tb-header-inner {
+    flex-wrap: nowrap;
+  }
+  .tb-search {
+    flex: 1;
+    min-width: 0;
+    max-width: 520px;
+    order: unset;
+    width: auto;
+  }
+  .tb-cart {
+    order: unset;
+    margin-left: 0;
+  }
 }
 
 /* 手机端：淘宝式布局适配 */
