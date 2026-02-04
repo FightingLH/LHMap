@@ -294,6 +294,125 @@ a:hover {
   border-bottom: 2px solid var(--tb-orange);
   display: inline-block;
 }
+
+/* 精选好物轮播 */
+.tb-carousel-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.tb-carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+.tb-carousel::-webkit-scrollbar {
+  display: none;
+}
+.tb-carousel-inner {
+  display: flex;
+  gap: 12px;
+  padding: 0 4px;
+  width: max-content;
+}
+.tb-carousel-item {
+  flex-shrink: 0;
+  width: 200px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+@media (min-width: 600px) {
+  .tb-carousel-item {
+    width: 220px;
+  }
+}
+@media (min-width: 900px) {
+  .tb-carousel-item {
+    width: 228px;
+  }
+}
+.tb-carousel-item .tb-product-card {
+  height: 100%;
+  min-height: 0;
+}
+.tb-carousel-item .tb-product-thumb,
+.tb-carousel-item .tb-product-body {
+  min-width: 0;
+}
+.tb-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--tb-surface);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  color: var(--tb-text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.tb-carousel-btn:hover {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: var(--tb-orange);
+}
+.tb-carousel-prev {
+  left: -8px;
+}
+.tb-carousel-next {
+  right: -8px;
+}
+@media (max-width: 600px) {
+  .tb-carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  .tb-carousel-prev {
+    left: 0;
+  }
+  .tb-carousel-next {
+    right: 0;
+  }
+}
+.tb-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.tb-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: var(--tb-border);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.tb-carousel-dot:hover {
+  background: var(--tb-text-muted);
+}
+.tb-carousel-dot.is-active {
+  background: var(--tb-orange);
+  transform: scale(1.2);
+}
+
 .tb-products-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

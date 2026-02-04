@@ -64,11 +64,18 @@
       </div>
     </section>
 
-    <!-- 淘宝式：商品区块 -->
+    <!-- 淘宝式：精选好物轮播 -->
     <section class="tb-content">
       <div class="tb-wrap">
-        <h3 class="tb-section-title">精选推荐</h3>
-        <div class="tb-products-grid" id="featuredProducts"></div>
+        <h3 class="tb-section-title">精选好物</h3>
+        <div class="tb-carousel-wrap">
+          <button type="button" class="tb-carousel-btn tb-carousel-prev" id="carouselPrev" aria-label="上一组">‹</button>
+          <button type="button" class="tb-carousel-btn tb-carousel-next" id="carouselNext" aria-label="下一组">›</button>
+          <div class="tb-carousel" id="featuredCarousel">
+            <div class="tb-carousel-inner" id="featuredProducts"></div>
+          </div>
+          <div class="tb-carousel-dots" id="carouselDots"></div>
+        </div>
       </div>
     </section>
   </main>
@@ -84,24 +91,76 @@
   <script>
     (function () {
       updateCartCount();
-      var grid = document.getElementById('featuredProducts');
-      var list = (window.PRODUCTS || []).slice(0, 6);
+      var inner = document.getElementById('featuredProducts');
+      var list = (window.PRODUCTS || []).slice(0, 8);
+      var gap = 12;
       list.forEach(function (p) {
         var card = document.createElement('div');
-        card.className = 'tb-product-card';
+        card.className = 'tb-carousel-item';
         var imgUrl = (p.image || (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '')) || '';
         var imgAlt = (p.name || '商品') + ' 图片';
         card.innerHTML =
-          '<a href="product.html?id=' + p.id + '" class="tb-product-thumb">' +
-            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;" />' +
-          '</a>' +
-          '<div class="tb-product-body">' +
-            '<a href="product.html?id=' + p.id + '" class="tb-product-name">' + p.name + '</a>' +
-            '<span class="tb-product-price">¥' + p.price + '</span>' +
-            '<a href="product.html?id=' + p.id + '" class="tb-product-btn">查看</a>' +
+          '<div class="tb-product-card">' +
+            '<a href="product.html?id=' + p.id + '" class="tb-product-thumb">' +
+              '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;" />' +
+            '</a>' +
+            '<div class="tb-product-body">' +
+              '<a href="product.html?id=' + p.id + '" class="tb-product-name">' + p.name + '</a>' +
+              '<span class="tb-product-price">¥' + p.price + '</span>' +
+              '<a href="product.html?id=' + p.id + '" class="tb-product-btn">查看</a>' +
+            '</div>' +
           '</div>';
-        grid.appendChild(card);
+        inner.appendChild(card);
       });
+      var carousel = document.getElementById('featuredCarousel');
+      var prevBtn = document.getElementById('carouselPrev');
+      var nextBtn = document.getElementById('carouselNext');
+      var dotsEl = document.getElementById('carouselDots');
+      var firstItem = inner.querySelector('.tb-carousel-item');
+      var itemWidth = firstItem ? firstItem.offsetWidth + gap : 212;
+      var carouselWidth = carousel.offsetWidth;
+      var visibleCount = Math.max(1, Math.floor(carouselWidth / itemWidth));
+      var total = list.length;
+      var maxIndex = Math.max(0, total - visibleCount);
+      var currentIndex = 0;
+      var autoTimer = null;
+      function scrollTo(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        carousel.scrollTo({ left: currentIndex * itemWidth, behavior: 'smooth' });
+        updateDots();
+      }
+      function updateDots() {
+        if (!dotsEl || maxIndex <= 0) return;
+        dotsEl.innerHTML = '';
+        for (var i = 0; i <= maxIndex; i++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'tb-carousel-dot' + (i === currentIndex ? ' is-active' : '');
+          dot.setAttribute('aria-label', '第' + (i + 1) + '页');
+          dot.addEventListener('click', function (j) { return function () { scrollTo(j); }; }(i));
+          dotsEl.appendChild(dot);
+        }
+      }
+      prevBtn.addEventListener('click', function () { scrollTo(currentIndex - 1); });
+      nextBtn.addEventListener('click', function () { scrollTo(currentIndex + 1); });
+      carousel.addEventListener('scroll', function () {
+        var idx = Math.round(carousel.scrollLeft / itemWidth);
+        if (idx !== currentIndex) { currentIndex = idx; updateDots(); }
+      });
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(function () {
+          if (currentIndex >= maxIndex) scrollTo(0);
+          else scrollTo(currentIndex + 1);
+        }, 4000);
+      }
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+      carousel.addEventListener('mouseenter', stopAuto);
+      carousel.addEventListener('mouseleave', startAuto);
+      updateDots();
+      startAuto();
     })();
   </script>
 </body>
