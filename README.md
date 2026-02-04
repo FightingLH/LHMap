@@ -25,19 +25,11 @@ npx serve .
 
 ## 部署到 GitHub Pages
 
-### 方式一：Actions 自动部署（推荐）
-
 1. 将本仓库推送到你的 GitHub。
 2. 仓库 **Settings → Pages**：
-   - **Source** 选 **GitHub Actions**。
-3. 之后每次推送到 `main` 或 `master` 分支，会自动部署；完成后在 **Actions** 里可看到部署状态，站点地址为 `https://<用户名>.github.io/<仓库名>/`。
-
-### 方式二：从分支发布
-
-1. 仓库 **Settings → Pages**：
    - **Source** 选 **Deploy from a branch**。
-   - **Branch** 选 `main`（或 `master`），目录选 **/ (root)**。
-2. 保存后等待几分钟，访问上述地址即可。
+   - **Branch** 选 `master`（或 `main`），目录选 **/ (root)**。
+3. 保存后等待几分钟，站点地址为 `https://<用户名>.github.io/<仓库名>/`（例如 `https://fightinglh.github.io/LHMap/`）。
 
 ## 新增文章
 
