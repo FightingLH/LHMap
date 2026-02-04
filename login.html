@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>关于 - 于洋小店</title>
+  <title>登录 - 于洋小店</title>
   <link rel="stylesheet" href="css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,18 +43,27 @@
       <a href="index.html" class="tb-nav-item">首页</a>
       <a href="products.html" class="tb-nav-item">全部商品</a>
       <a href="cart.html" class="tb-nav-item">购物车</a>
-      <a href="about.html" class="tb-nav-item" aria-current="page">关于我们</a>
+      <a href="about.html" class="tb-nav-item">关于我们</a>
     </div>
   </nav>
 
   <main class="tb-main">
     <section class="tb-content">
-      <div class="tb-wrap">
-        <h3 class="tb-section-title">关于我们</h3>
-        <div class="about-body">
-          <p>于洋小店是一个依赖 GitHub Pages 的静态卖货网站，纯 HTML/CSS/JS，无后端。购物车数据保存在浏览器本地，结算时可将订单信息复制后通过微信或邮件发给我们。</p>
-          <p>如需联系：请通过仓库 <a href="https://github.com/FightingLH/LHMap">GitHub</a> 或您自行在页面上补充的联系方式与我们沟通。</p>
-        </div>
+      <div class="tb-wrap tb-login-wrap">
+        <h3 class="tb-section-title">登录</h3>
+        <p class="tb-login-hint">本站为静态演示，登录信息仅保存在浏览器本地，无后端验证。</p>
+        <form class="tb-login-form card" id="loginForm">
+          <div class="field">
+            <label for="loginName">用户名</label>
+            <input type="text" id="loginName" class="input" placeholder="请输入用户名" required autocomplete="username">
+          </div>
+          <div class="field">
+            <label for="loginPwd">密码</label>
+            <input type="password" id="loginPwd" class="input" placeholder="选填，仅演示" autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary">登录</button>
+        </form>
+        <p class="tb-login-back"><a href="index.html">← 返回首页</a></p>
       </div>
     </section>
   </main>
@@ -66,6 +75,21 @@
   </footer>
 
   <script src="js/store.js"></script>
-  <script>updateCartCount();</script>
+  <script src="js/auth.js"></script>
+  <script>
+    updateCartCount();
+    updateLoginUI();
+    document.getElementById('loginForm').onsubmit = function (e) {
+      e.preventDefault();
+      var name = (document.getElementById('loginName').value || '').trim();
+      if (!name) {
+        alert('请输入用户名');
+        return;
+      }
+      setLoginUser({ name: name });
+      var returnUrl = (new URLSearchParams(window.location.search)).get('return') || 'index.html';
+      window.location.href = returnUrl;
+    };
+  </script>
 </body>
 </html>

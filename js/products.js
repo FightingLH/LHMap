@@ -13,6 +13,19 @@ function getProductById(id) {
   return window.PRODUCTS.find(function (p) { return p.id === id; });
 }
 
+/** 按关键词过滤商品（匹配 name、category、desc） */
+function getProductsByKeyword(keyword) {
+  var list = window.PRODUCTS || [];
+  if (!keyword || typeof keyword !== 'string') return list;
+  var k = keyword.trim().toLowerCase();
+  if (!k) return list;
+  return list.filter(function (p) {
+    return (p.name && p.name.toLowerCase().indexOf(k) !== -1) ||
+      (p.category && p.category.toLowerCase().indexOf(k) !== -1) ||
+      (p.desc && p.desc.toLowerCase().indexOf(k) !== -1);
+  });
+}
+
 /**
  * 商品图片：优先用商品自带的 image，否则按 id 生成 picsum 地址
  */

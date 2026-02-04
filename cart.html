@@ -14,6 +14,8 @@
     <div class="tb-wrap">
       <span class="tb-welcome">欢迎来到于洋小店</span>
       <div class="tb-util-links">
+        <span id="loginArea"><a href="login.html">登录</a></span>
+        <span id="logoutArea" style="display:none"><span id="welcomeUser"></span> <a href="#" id="logoutBtn">退出</a></span>
         <a href="index.html">首页</a>
         <a href="products.html">全部商品</a>
         <a href="cart.html">购物车</a>
@@ -25,10 +27,10 @@
   <header class="tb-header">
     <div class="tb-wrap tb-header-inner">
       <a href="index.html" class="tb-logo">于洋小店</a>
-      <div class="tb-search">
-        <input type="text" placeholder="搜索商品" />
-        <button type="button" class="tb-search-btn" onclick="location.href='products.html'">搜索</button>
-      </div>
+      <form class="tb-search" action="products.html" method="get" role="search">
+        <input type="text" name="q" placeholder="搜索商品" />
+        <button type="submit" class="tb-search-btn">搜索</button>
+      </form>
       <a href="cart.html" class="tb-cart">
         购物车
         <span class="tb-cart-badge js-cart-count">0</span>
@@ -67,9 +69,11 @@
 
   <script src="js/products.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
   <script>
     (function () {
       updateCartCount();
+      updateLoginUI();
       var cart = getCart();
       var content = document.getElementById('cartContent');
       var totalsEl = document.getElementById('cartTotals');
