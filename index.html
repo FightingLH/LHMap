@@ -50,32 +50,56 @@
 
   <!-- 主内容：灰底 + 横幅 + 商品区 -->
   <main class="tb-main">
-    <!-- 淘宝式：大横幅 -->
+    <!-- 淘宝式：于洋小店 · 精选好物 轮播广告 -->
     <section class="tb-banner">
       <div class="tb-wrap">
-        <div class="tb-banner-inner">
-          <div class="tb-banner-text">
-            <h2>于洋小店 · 精选好物</h2>
-            <p>静候挑选，托管于 GitHub Pages</p>
-            <a href="products.html" class="btn btn-primary">去选商品</a>
+        <div class="tb-banner-carousel-wrap">
+          <button type="button" class="tb-banner-prev" id="bannerPrev" aria-label="上一张">‹</button>
+          <button type="button" class="tb-banner-next" id="bannerNext" aria-label="下一张">›</button>
+          <div class="tb-banner-carousel" id="bannerCarousel">
+            <div class="tb-banner-slides" id="bannerSlides">
+              <div class="tb-banner-slide is-active">
+                <div class="tb-banner-inner">
+                  <div class="tb-banner-text">
+                    <h2>于洋小店 · 精选好物</h2>
+                    <p>静候挑选，托管于 GitHub Pages</p>
+                    <a href="products.html" class="btn btn-primary">去选商品</a>
+                  </div>
+                  <div class="tb-banner-pic tb-banner-pic-1"></div>
+                </div>
+              </div>
+              <div class="tb-banner-slide">
+                <div class="tb-banner-inner">
+                  <div class="tb-banner-text">
+                    <h2>新品上架</h2>
+                    <p>数码好物、服饰包袋，一站购齐</p>
+                    <a href="products.html" class="btn btn-primary">立即查看</a>
+                  </div>
+                  <div class="tb-banner-pic tb-banner-pic-2"></div>
+                </div>
+              </div>
+              <div class="tb-banner-slide">
+                <div class="tb-banner-inner">
+                  <div class="tb-banner-text">
+                    <h2>限时优惠</h2>
+                    <p>精选好价，不容错过</p>
+                    <a href="products.html" class="btn btn-primary">去逛逛</a>
+                  </div>
+                  <div class="tb-banner-pic tb-banner-pic-3"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tb-banner-pic"></div>
+          <div class="tb-banner-dots" id="bannerDots"></div>
         </div>
       </div>
     </section>
 
-    <!-- 淘宝式：精选好物轮播 -->
+    <!-- 淘宝式：商品区块 -->
     <section class="tb-content">
       <div class="tb-wrap">
-        <h3 class="tb-section-title">精选好物</h3>
-        <div class="tb-carousel-wrap">
-          <button type="button" class="tb-carousel-btn tb-carousel-prev" id="carouselPrev" aria-label="上一组">‹</button>
-          <button type="button" class="tb-carousel-btn tb-carousel-next" id="carouselNext" aria-label="下一组">›</button>
-          <div class="tb-carousel" id="featuredCarousel">
-            <div class="tb-carousel-inner" id="featuredProducts"></div>
-          </div>
-          <div class="tb-carousel-dots" id="carouselDots"></div>
-        </div>
+        <h3 class="tb-section-title">精选推荐</h3>
+        <div class="tb-products-grid" id="featuredProducts"></div>
       </div>
     </section>
   </main>
@@ -91,76 +115,57 @@
   <script>
     (function () {
       updateCartCount();
-      var inner = document.getElementById('featuredProducts');
-      var list = (window.PRODUCTS || []).slice(0, 8);
-      var gap = 12;
+      // 精选推荐：商品网格
+      var grid = document.getElementById('featuredProducts');
+      var list = (window.PRODUCTS || []).slice(0, 6);
       list.forEach(function (p) {
         var card = document.createElement('div');
-        card.className = 'tb-carousel-item';
+        card.className = 'tb-product-card';
         var imgUrl = (p.image || (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '')) || '';
         var imgAlt = (p.name || '商品') + ' 图片';
         card.innerHTML =
-          '<div class="tb-product-card">' +
-            '<a href="product.html?id=' + p.id + '" class="tb-product-thumb">' +
-              '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;" />' +
-            '</a>' +
-            '<div class="tb-product-body">' +
-              '<a href="product.html?id=' + p.id + '" class="tb-product-name">' + p.name + '</a>' +
-              '<span class="tb-product-price">¥' + p.price + '</span>' +
-              '<a href="product.html?id=' + p.id + '" class="tb-product-btn">查看</a>' +
-            '</div>' +
+          '<a href="product.html?id=' + p.id + '" class="tb-product-thumb">' +
+            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;" />' +
+          '</a>' +
+          '<div class="tb-product-body">' +
+            '<a href="product.html?id=' + p.id + '" class="tb-product-name">' + p.name + '</a>' +
+            '<span class="tb-product-price">¥' + p.price + '</span>' +
+            '<a href="product.html?id=' + p.id + '" class="tb-product-btn">查看</a>' +
           '</div>';
-        inner.appendChild(card);
+        grid.appendChild(card);
       });
-      var carousel = document.getElementById('featuredCarousel');
-      var prevBtn = document.getElementById('carouselPrev');
-      var nextBtn = document.getElementById('carouselNext');
-      var dotsEl = document.getElementById('carouselDots');
-      var firstItem = inner.querySelector('.tb-carousel-item');
-      var itemWidth = firstItem ? firstItem.offsetWidth + gap : 212;
-      var carouselWidth = carousel.offsetWidth;
-      var visibleCount = Math.max(1, Math.floor(carouselWidth / itemWidth));
-      var total = list.length;
-      var maxIndex = Math.max(0, total - visibleCount);
-      var currentIndex = 0;
-      var autoTimer = null;
-      function scrollTo(index) {
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        carousel.scrollTo({ left: currentIndex * itemWidth, behavior: 'smooth' });
-        updateDots();
-      }
-      function updateDots() {
-        if (!dotsEl || maxIndex <= 0) return;
-        dotsEl.innerHTML = '';
-        for (var i = 0; i <= maxIndex; i++) {
-          var dot = document.createElement('button');
-          dot.type = 'button';
-          dot.className = 'tb-carousel-dot' + (i === currentIndex ? ' is-active' : '');
-          dot.setAttribute('aria-label', '第' + (i + 1) + '页');
-          dot.addEventListener('click', function (j) { return function () { scrollTo(j); }; }(i));
-          dotsEl.appendChild(dot);
+      // 横幅轮播广告
+      var slides = document.querySelectorAll('.tb-banner-slide');
+      var dotsEl = document.getElementById('bannerDots');
+      var total = slides.length;
+      var cur = 0;
+      var bannerTimer = null;
+      function go(index) {
+        cur = (index + total) % total;
+        slides.forEach(function (s, i) { s.classList.toggle('is-active', i === cur); });
+        if (dotsEl) {
+          dotsEl.querySelectorAll('.tb-banner-dot').forEach(function (d, i) { d.classList.toggle('is-active', i === cur); });
         }
       }
-      prevBtn.addEventListener('click', function () { scrollTo(currentIndex - 1); });
-      nextBtn.addEventListener('click', function () { scrollTo(currentIndex + 1); });
-      carousel.addEventListener('scroll', function () {
-        var idx = Math.round(carousel.scrollLeft / itemWidth);
-        if (idx !== currentIndex) { currentIndex = idx; updateDots(); }
-      });
-      function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(function () {
-          if (currentIndex >= maxIndex) scrollTo(0);
-          else scrollTo(currentIndex + 1);
-        }, 4000);
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'tb-banner-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', '第' + (i + 1) + '张');
+        (function (j) { dot.addEventListener('click', function () { go(j); }); })(i);
+        dotsEl.appendChild(dot);
       }
-      function stopAuto() {
-        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      document.getElementById('bannerPrev').addEventListener('click', function () { go(cur - 1); });
+      document.getElementById('bannerNext').addEventListener('click', function () { go(cur + 1); });
+      function startBanner() {
+        bannerTimer = setInterval(function () { go(cur + 1); }, 4500);
       }
-      carousel.addEventListener('mouseenter', stopAuto);
-      carousel.addEventListener('mouseleave', startAuto);
-      updateDots();
-      startAuto();
+      function stopBanner() {
+        if (bannerTimer) { clearInterval(bannerTimer); bannerTimer = null; }
+      }
+      document.getElementById('bannerCarousel').addEventListener('mouseenter', stopBanner);
+      document.getElementById('bannerCarousel').addEventListener('mouseleave', startBanner);
+      startBanner();
     })();
   </script>
 </body>

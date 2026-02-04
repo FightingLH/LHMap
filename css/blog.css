@@ -244,6 +244,36 @@ a:hover {
   border-bottom: 1px solid var(--tb-border);
   padding: 16px 0;
 }
+/* 横幅轮播广告 */
+.tb-banner-carousel-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+}
+.tb-banner-carousel {
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,103,0,0.12);
+}
+.tb-banner-slides {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+}
+.tb-banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+.tb-banner-slide.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
 .tb-banner-inner {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -253,7 +283,6 @@ a:hover {
   padding: 20px;
   background: linear-gradient(135deg, #fff9f5 0%, #fff0e6 100%);
   border-radius: var(--radius);
-  border: 1px solid rgba(255,103,0,0.12);
   width: 100%;
   box-sizing: border-box;
 }
@@ -275,8 +304,72 @@ a:hover {
 }
 .tb-banner-pic {
   height: 120px;
-  background: linear-gradient(135deg, #ffe4d0 0%, #ffd4b8 100%);
   border-radius: var(--radius);
+}
+.tb-banner-pic-1 {
+  background: linear-gradient(135deg, #ffe4d0 0%, #ffd4b8 100%);
+}
+.tb-banner-pic-2 {
+  background: linear-gradient(135deg, #e8f4ff 0%, #d0e8ff 100%);
+}
+.tb-banner-pic-3 {
+  background: linear-gradient(135deg, #f0ffe8 0%, #e0ffd0 100%);
+}
+.tb-banner-prev,
+.tb-banner-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  color: var(--tb-text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+.tb-banner-prev:hover,
+.tb-banner-next:hover {
+  background: #fff;
+  color: var(--tb-orange);
+}
+.tb-banner-prev {
+  left: 8px;
+}
+.tb-banner-next {
+  right: 8px;
+}
+.tb-banner-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.tb-banner-dot {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: var(--tb-border);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.tb-banner-dot:hover {
+  background: var(--tb-text-muted);
+}
+.tb-banner-dot.is-active {
+  background: var(--tb-orange);
+  transform: scale(1.2);
 }
 
 /* 商品区块 */
