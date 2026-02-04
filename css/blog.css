@@ -22,6 +22,7 @@
 html {
   font-size: 14px;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* ========== 高端背景：柔和光晕 + 轻微动效（参考 Stripe / Linear 等） ========== */
@@ -217,6 +219,216 @@ a:hover {
 }
 .main {
   padding-bottom: 40px;
+}
+
+/* ========== 手机端适配 ========== */
+@media (max-width: 768px) {
+  .wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .main {
+    padding-bottom: 24px;
+  }
+
+  /* 顶栏：缩小 logo、搜索框弹性、保证触控区域 */
+  .site-topbar .wrap {
+    height: 44px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .site-logo {
+    font-size: 16px;
+  }
+  .topbar-right {
+    gap: 10px;
+  }
+  .topbar-search {
+    flex: 1;
+    min-width: 0;
+    max-width: 180px;
+    height: 36px;
+  }
+  .topbar-search input {
+    font-size: 14px;
+  }
+  .topbar-search .btn-search {
+    width: 52px;
+    font-size: 12px;
+  }
+  .topbar-cart {
+    padding: 0 12px;
+    height: 36px;
+    min-width: 44px;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .topbar-cart .badge {
+    font-size: 11px;
+  }
+
+  /* 主导航：换行、触控友好 */
+  .site-header .wrap {
+    height: auto;
+    min-height: 48px;
+    padding: 8px 12px;
+    gap: 0;
+  }
+  .site-nav {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .site-nav a {
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 12px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* 首页首屏 */
+  .hero-inner {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  .hero h2 {
+    font-size: 18px;
+  }
+  .hero p {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .hero-banner {
+    height: 80px;
+    font-size: 15px;
+  }
+  .section-title {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  /* 商品网格：小屏 2 列、缩小间距 */
+  .products-grid {
+    gap: 8px;
+  }
+  .product-card .body {
+    padding: 8px 10px;
+  }
+  .product-card .name {
+    font-size: 12px;
+    height: 2.6em;
+  }
+  .product-card .price {
+    font-size: 16px;
+  }
+  .product-card .btn-add {
+    height: 36px;
+    font-size: 12px;
+    min-height: 44px;
+  }
+
+  /* 商品详情 */
+  .product-detail .thumb-wrap {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+  .article-header .title {
+    font-size: 17px;
+  }
+  .price-row .price {
+    font-size: 20px;
+  }
+  .back-link {
+    margin-bottom: 12px;
+  }
+
+  /* 购物车表格：小屏横向滚动 */
+  #cartContent {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -12px;
+    padding: 0 12px;
+  }
+  #cartContent .cart-table {
+    min-width: 420px;
+  }
+  .cart-table th,
+  .cart-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  .qty input {
+    width: 48px;
+    padding: 6px 4px;
+  }
+
+  /* 结算页 */
+  .split {
+    gap: 16px;
+  }
+  .card {
+    padding: 12px;
+  }
+
+  /* 按钮触控区域 */
+  .btn {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+  .site-footer {
+    margin-top: 24px;
+    padding: 16px 12px;
+    font-size: 11px;
+  }
+
+  /* 刘海屏安全区 */
+  .site-topbar .wrap {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .site-header .wrap,
+  .wrap {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .site-footer .wrap {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+  .wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .product-card .body {
+    padding: 6px 8px;
+  }
+  .product-card .name {
+    font-size: 11px;
+  }
+  .product-card .price {
+    font-size: 15px;
+  }
+  .hero-inner {
+    padding: 16px 12px;
+  }
+  .hero h2 {
+    font-size: 17px;
+  }
+  .hero-banner {
+    height: 64px;
+    font-size: 14px;
+  }
 }
 
 /* ========== 首页：轮播区 + 商品区 ========== */

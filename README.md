@@ -1,4 +1,4 @@
-# LHMap 小店
+# 于洋 小店
 
 依赖 **GitHub** 的静态卖货网站，可部署在 [GitHub Pages](https://pages.github.com/) 上。纯 HTML/CSS/JS，无后端；购物车用浏览器本地存储，结算时复制订单信息后通过微信/邮件等方式发给我们即可。
 
