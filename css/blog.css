@@ -109,7 +109,10 @@ a:hover {
 }
 .tb-util-links {
   display: flex;
+  align-items: center;
   gap: 16px;
+  font-size: 12px;
+  color: var(--tb-text-muted);
 }
 .tb-util-links a {
   font-size: 12px;
@@ -117,6 +120,15 @@ a:hover {
 }
 .tb-util-links a:hover {
   color: var(--tb-orange);
+}
+.tb-util-links > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.tb-util-links > span a {
+  white-space: nowrap;
 }
 
 /* 主头部：白底 Logo | 搜索 | 购物车 */
@@ -386,6 +398,48 @@ a:hover {
   padding-bottom: 8px;
   border-bottom: 2px solid var(--tb-orange);
   display: inline-block;
+}
+
+/* 登录页 */
+.tb-login-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.tb-login-hint {
+  font-size: 13px;
+  color: var(--tb-text-muted);
+  margin: 0 0 16px;
+}
+.tb-login-form.card {
+  padding: 24px;
+}
+.tb-login-form .field {
+  margin-bottom: 16px;
+}
+.tb-login-form .field:last-of-type {
+  margin-bottom: 20px;
+}
+.tb-login-form .field label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: var(--tb-text);
+}
+.tb-login-form .input {
+  width: 100%;
+  display: block;
+}
+.tb-login-form .btn-primary {
+  width: 100%;
+  margin-top: 0;
+}
+.tb-login-back {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--tb-text-muted);
+}
+.tb-login-back a:hover {
+  color: var(--tb-orange);
 }
 
 /* 精选好物轮播 */
