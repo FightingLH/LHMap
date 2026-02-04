@@ -75,9 +75,12 @@
       list.forEach(function (p) {
         var card = document.createElement('div');
         card.className = 'product-card';
-        var img = (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '');
+        var imgUrl = (p.image || (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '')) || '';
+        var imgAlt = (p.name || '商品') + ' 图片';
         card.innerHTML =
-          '<a href="product.html?id=' + p.id + '" class="thumb" style="background-image:url(\'' + img + '\')"></a>' +
+          '<a href="product.html?id=' + p.id + '" class="thumb">' +
+            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.style.minHeight=\'120px\';this.onerror=null;this.alt=\'图片加载失败\';" />' +
+          '</a>' +
           '<div class="body">' +
             '<a href="product.html?id=' + p.id + '" class="name">' + p.name + '</a>' +
             '<span class="price">¥' + p.price + '</span>' +

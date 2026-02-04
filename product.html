@@ -61,10 +61,13 @@
         el.innerHTML = '<p class="empty">未找到该商品。<a href="products.html">返回商品列表</a></p>';
         return;
       }
-      var img = (window.getProductImageUrl ? getProductImageUrl(p.id, 800) : '');
+      var imgUrl = (p.image || (window.getProductImageUrl ? getProductImageUrl(p.id, 800) : '')) || '';
+      var imgAlt = (p.name || '商品') + ' 图片';
       el.innerHTML =
-        '<article class="card" style="max-width: 640px;">' +
-          '<div class="thumb" style="aspect-ratio:1; border-radius: 4px; margin-bottom: 16px; background-image:url(\'' + img + '\'); background-color:#fafafa;"></div>' +
+        '<article class="card product-detail" style="max-width: 640px;">' +
+          '<div class="thumb-wrap">' +
+            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;this.alt=\'图片加载失败\';" />' +
+          '</div>' +
           '<header class="article-header">' +
             '<h2 class="title">' + p.name + '</h2>' +
             '<p class="meta">' + p.category + '</p>' +
