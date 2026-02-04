@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品详情 - LHMap 小店</title>
+  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
+      <nav class="site-nav">
+        <a href="index.html">首页</a>
+        <a href="products.html">商品</a>
+        <a href="cart.html">购物车 <span class="badge js-cart-count">0</span></a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main wrap">
+    <a href="products.html" class="back-link">← 返回商品列表</a>
+    <div id="productDetail"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 LHMap 小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    (function () {
+      updateCartCount();
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      var p = id && getProductById(id);
+      var el = document.getElementById('productDetail');
+      if (!p) {
+        el.innerHTML = '<p class="empty">未找到该商品。<a href="products.html">返回商品列表</a></p>';
+        return;
+      }
+      el.innerHTML =
+        '<article class="card" style="max-width: 640px;">' +
+          '<div class="thumb" style="aspect-ratio:16/10; border-radius: var(--radius); margin-bottom: 1rem;"></div>' +
+          '<header class="article-header">' +
+            '<h2 class="title">' + p.name + '</h2>' +
+            '<p class="meta">' + p.category + ' · ¥' + p.price + '</p>' +
+          '</header>' +
+          '<div class="product-body">' +
+            '<p>' + p.desc + '</p>' +
+            '<div class="price-row" style="margin-top: 1rem;">' +
+              '<span class="price">¥' + p.price + '</span>' +
+              '<div class="qty">' +
+                '数量 <input type="number" id="qty" min="1" value="1" class="input" style="width: 4rem;">' +
+                '<button type="button" class="btn btn-primary" id="btnAdd">加入购物车</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</article>';
+      document.getElementById('btnAdd').onclick = function () {
+        var q = parseInt(document.getElementById('qty').value, 10) || 1;
+        addToCart(p.id, q);
+        updateCartCount();
+        this.textContent = '已加入';
+        var t = this;
+        setTimeout(function () { t.textContent = '加入购物车'; }, 1500);
+      };
+    })();
+  </script>
+</body>
+</html>

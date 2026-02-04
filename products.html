@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>首页 - LHMap 小店</title>
+  <title>商品 - LHMap 小店</title>
   <link rel="stylesheet" href="css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
     <div class="wrap">
       <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
       <nav class="site-nav">
-        <a href="index.html" aria-current="page">首页</a>
-        <a href="products.html">商品</a>
+        <a href="index.html">首页</a>
+        <a href="products.html" aria-current="page">商品</a>
         <a href="cart.html">购物车 <span class="badge js-cart-count">0</span></a>
         <a href="about.html">关于</a>
       </nav>
@@ -23,19 +23,8 @@
   </header>
 
   <main class="main wrap">
-    <section class="hero">
-      <div>
-        <h2>欢迎来到 LHMap 小店</h2>
-        <p>精选好物，静候挑选。静态卖货站，托管于 GitHub Pages。</p>
-        <div class="cta">
-          <a href="products.html" class="btn btn-primary">去选商品</a>
-          <a href="cart.html" class="btn">查看购物车</a>
-        </div>
-      </div>
-    </section>
-
-    <h3 class="page-title">精选推荐</h3>
-    <div class="products-grid" id="featuredProducts"></div>
+    <h2 class="page-title">全部商品</h2>
+    <div class="products-grid" id="productsGrid"></div>
   </main>
 
   <footer class="site-footer">
@@ -49,9 +38,8 @@
   <script>
     (function () {
       updateCartCount();
-      var grid = document.getElementById('featuredProducts');
-      var list = (window.PRODUCTS || []).slice(0, 6);
-      list.forEach(function (p) {
+      var grid = document.getElementById('productsGrid');
+      (window.PRODUCTS || []).forEach(function (p) {
         var card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML =
@@ -61,7 +49,7 @@
             '<p class="desc">' + p.desc + '</p>' +
             '<div class="price-row">' +
               '<span class="price">¥' + p.price + '</span>' +
-              '<a href="product.html?id=' + p.id + '" class="btn btn-primary">查看</a>' +
+              '<a href="product.html?id=' + p.id + '" class="btn btn-primary">加入购物车</a>' +
             '</div>' +
           '</div>';
         grid.appendChild(card);

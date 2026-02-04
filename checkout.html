@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>结算 - LHMap 小店</title>
+  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
+      <nav class="site-nav">
+        <a href="index.html">首页</a>
+        <a href="products.html">商品</a>
+        <a href="cart.html">购物车 <span class="badge js-cart-count">0</span></a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main wrap">
+    <h2 class="page-title">填写订单</h2>
+    <div id="checkoutEmpty" style="display: none;">
+      <p class="empty">购物车是空的，请先 <a href="products.html">添加商品</a> 或 <a href="cart.html">查看购物车</a>。</p>
+    </div>
+    <div id="checkoutForm" class="split" style="display: none;">
+      <div class="card">
+        <h3 style="margin: 0 0 1rem;">收货信息</h3>
+        <div class="field" style="margin-bottom: 1rem;">
+          <label>姓名</label>
+          <input type="text" id="name" class="input" placeholder="收货人姓名" required>
+        </div>
+        <div class="field" style="margin-bottom: 1rem;">
+          <label>电话</label>
+          <input type="tel" id="phone" class="input" placeholder="手机号" required>
+        </div>
+        <div class="field" style="margin-bottom: 1rem;">
+          <label>地址</label>
+          <textarea id="address" class="input" rows="3" placeholder="省市区 + 详细地址" required></textarea>
+        </div>
+        <div class="field">
+          <label>备注</label>
+          <textarea id="note" class="input" rows="2" placeholder="选填"></textarea>
+        </div>
+      </div>
+      <div>
+        <div class="card" id="orderSummary"></div>
+        <p class="hint" style="margin-top: 0.75rem;">本站为静态演示，提交后会将订单信息复制到剪贴板，你可通过微信/邮件等方式发给我们完成下单。</p>
+        <button type="button" class="btn btn-primary" id="btnSubmit" style="margin-top: 1rem;">提交订单（复制信息）</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 LHMap 小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    (function () {
+      updateCartCount();
+      var cart = getCart();
+      var emptyEl = document.getElementById('checkoutEmpty');
+      var formEl = document.getElementById('checkoutForm');
+      var summaryEl = document.getElementById('orderSummary');
+      var btnSubmit = document.getElementById('btnSubmit');
+      if (!cart.length) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      formEl.style.display = 'grid';
+      var totalQty = 0;
+      var totalMoney = 0;
+      var lines = [];
+      cart.forEach(function (item) {
+        var p = getProductById(item.id);
+        if (!p) return;
+        var qty = item.qty || 1;
+        totalQty += qty;
+        totalMoney += p.price * qty;
+        lines.push(p.name + ' x' + qty + ' ¥' + (p.price * qty));
+      });
+      summaryEl.innerHTML = '<h3 style="margin: 0 0 0.75rem;">订单摘要</h3><div class="totals"><div class="row">共 ' + totalQty + ' 件</div><div class="row">合计 <strong>¥' + totalMoney + '</strong></div></div>';
+      btnSubmit.onclick = function () {
+        var name = document.getElementById('name').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var address = document.getElementById('address').value.trim();
+        var note = document.getElementById('note').value.trim();
+        if (!name || !phone || !address) {
+          alert('请填写姓名、电话和地址');
+          return;
+        }
+        var text = '【LHMap 小店 订单】\n\n收货人：' + name + '\n电话：' + phone + '\n地址：' + address + (note ? '\n备注：' + note : '') + '\n\n' + lines.join('\n') + '\n\n合计：¥' + totalMoney;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            alert('订单信息已复制到剪贴板，请通过微信/邮件发给我们。感谢购买！');
+          }).catch(function () { fallbackCopy(text); });
+        } else {
+          fallbackCopy(text);
+        }
+      };
+      function fallbackCopy(str) {
+        var ta = document.createElement('textarea');
+        ta.value = str;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          alert('订单信息已复制到剪贴板，请通过微信/邮件发给我们。感谢购买！');
+        } catch (e) {
+          alert('请手动复制以下内容发给我们：\n\n' + str);
+        }
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+</body>
+</html>

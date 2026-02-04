@@ -1,6 +1,6 @@
 {
   "name": "lhmap",
   "version": "1.0.0",
-  "description": "依赖 GitHub 的多页面静态博客，可部署 GitHub Pages",
+  "description": "依赖 GitHub 的静态卖货网站，可部署 GitHub Pages",
   "private": true
 }

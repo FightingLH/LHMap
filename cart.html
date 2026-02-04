@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车 - LHMap 小店</title>
+  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
+      <nav class="site-nav">
+        <a href="index.html">首页</a>
+        <a href="products.html">商品</a>
+        <a href="cart.html" aria-current="page">购物车 <span class="badge js-cart-count">0</span></a>
+        <a href="about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main wrap">
+    <h2 class="page-title">购物车</h2>
+    <div id="cartContent"></div>
+    <div class="totals card" id="cartTotals" style="max-width: 360px; margin-top: 1rem; display: none;"></div>
+    <p style="margin-top: 1rem;">
+      <a href="checkout.html" class="btn btn-primary" id="btnCheckout" style="display: none;">去结算</a>
+      <a href="products.html" class="btn">继续购物</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 LHMap 小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    (function () {
+      updateCartCount();
+      var cart = getCart();
+      var content = document.getElementById('cartContent');
+      var totalsEl = document.getElementById('cartTotals');
+      var btnCheckout = document.getElementById('btnCheckout');
+      if (!cart.length) {
+        content.innerHTML = '<p class="empty">购物车是空的。<a href="products.html">去选商品</a></p>';
+        return;
+      }
+      var totalQty = 0;
+      var totalMoney = 0;
+      var table = '<table class="cart-table"><thead><tr><th>商品</th><th>单价</th><th>数量</th><th>小计</th><th></th></tr></thead><tbody>';
+      cart.forEach(function (item) {
+        var p = getProductById(item.id);
+        if (!p) return;
+        var qty = item.qty || 1;
+        var sub = p.price * qty;
+        totalQty += qty;
+        totalMoney += sub;
+        table +=
+          '<tr data-id="' + p.id + '">' +
+            '<td><a href="product.html?id=' + p.id + '">' + p.name + '</a></td>' +
+            '<td>¥' + p.price + '</td>' +
+            '<td><div class="qty"><input type="number" value="' + qty + '" min="1" class="input js-qty" style="width:4rem;" data-id="' + p.id + '"></div></td>' +
+            '<td>¥' + sub + '</td>' +
+            '<td><button type="button" class="btn btn-link btn-danger js-remove" data-id="' + p.id + '">删除</button></td>' +
+          '</tr>';
+      });
+      table += '</tbody></table>';
+      content.innerHTML = table;
+      totalsEl.style.display = 'block';
+      totalsEl.innerHTML = '<div class="row">共 <strong>' + totalQty + '</strong> 件</div><div class="row">合计 <strong>¥' + totalMoney + '</strong></div>';
+      btnCheckout.style.display = 'inline-block';
+      content.querySelectorAll('.js-qty').forEach(function (input) {
+        input.addEventListener('change', function () {
+          setCartQty(this.dataset.id, this.value);
+          location.reload();
+        });
+      });
+      content.querySelectorAll('.js-remove').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          removeFromCart(this.dataset.id);
+          location.reload();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

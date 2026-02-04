@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于 - LHMap 博客</title>
+  <title>关于 - LHMap 小店</title>
   <link rel="stylesheet" href="css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,28 +12,31 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <h1 class="site-title"><a href="index.html">LHMap 博客</a></h1>
+      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
       <nav class="site-nav">
         <a href="index.html">首页</a>
-        <a href="archive.html">归档</a>
+        <a href="products.html">商品</a>
+        <a href="cart.html">购物车 <span class="badge js-cart-count">0</span></a>
         <a href="about.html" aria-current="page">关于</a>
       </nav>
     </div>
   </header>
 
   <main class="main wrap">
-    <h2 class="page-title">关于</h2>
+    <h2 class="page-title">关于我们</h2>
     <div class="about-body">
-      <p>这是一个依赖 GitHub 的多页面静态博客，使用纯 HTML/CSS 构建，可部署在 GitHub Pages 上，无需后端与数据库。</p>
-      <p>你可以直接克隆本仓库，在 <code>posts/</code> 下新增文章页面，在首页与归档页补充链接即可。</p>
-      <p>仓库地址：<a href="https://github.com">GitHub</a> · 本站由 <a href="https://pages.github.com/">GitHub Pages</a> 托管。</p>
+      <p>LHMap 小店是一个依赖 GitHub Pages 的静态卖货网站，纯 HTML/CSS/JS，无后端。购物车数据保存在浏览器本地，结算时可将订单信息复制后通过微信或邮件发给我们。</p>
+      <p>如需联系：请通过仓库 <a href="https://github.com/FightingLH/LHMap">GitHub</a> 或您自行在页面上补充的联系方式与我们沟通。</p>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>© 2025 LHMap 博客 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
+      <p>© 2025 LHMap 小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
     </div>
   </footer>
+
+  <script src="js/store.js"></script>
+  <script>updateCartCount();</script>
 </body>
 </html>

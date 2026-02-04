@@ -1,13 +1,17 @@
-# LHMap 博客
+# LHMap 小店
 
-依赖 **GitHub** 的多页面静态博客，可部署在 [GitHub Pages](https://pages.github.com/) 上。
+依赖 **GitHub** 的静态卖货网站，可部署在 [GitHub Pages](https://pages.github.com/) 上。纯 HTML/CSS/JS，无后端；购物车用浏览器本地存储，结算时复制订单信息后通过微信/邮件等方式发给我们即可。
 
 ## 结构
 
-- **首页** `index.html`：文章列表
-- **归档** `archive.html`：按时间归档
-- **关于** `about.html`：关于本站
-- **文章** `posts/*.html`：单篇文章页面
+- **首页** `index.html`：店铺介绍 + 精选推荐
+- **商品** `products.html`：全部商品列表
+- **商品详情** `product.html?id=1`：单商品页，可加入购物车
+- **购物车** `cart.html`：查看/修改数量/删除
+- **结算** `checkout.html`：填写收货信息，提交后复制订单信息
+- **关于** `about.html`：关于我们
+- **商品数据** `js/products.js`：可在此增删改商品
+- **购物车逻辑** `js/store.js`：localStorage 读写
 
 ## 本地预览
 
@@ -31,11 +35,9 @@ npx serve .
    - **Branch** 选 `master`（或 `main`），目录选 **/ (root)**。
 3. 保存后等待几分钟，站点地址为 `https://<用户名>.github.io/<仓库名>/`（例如 `https://fightinglh.github.io/LHMap/`）。
 
-## 新增文章
+## 新增/修改商品
 
-1. 在 `posts/` 下新建 HTML 文件（可复制 `posts/post-1.html` 改内容）。
-2. 在 `index.html` 的 `<ul class="post-list">` 里增加一条链接。
-3. 在 `archive.html` 对应月份下增加一条链接。
+在 `js/products.js` 里编辑 `window.PRODUCTS` 数组，每项包含：`id`、`name`、`price`、`desc`、`category`。保存后刷新商品页即可。
 
 ## 许可
 
