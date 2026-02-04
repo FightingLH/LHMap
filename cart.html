@@ -10,23 +10,38 @@
   <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="site-topbar">
+    <div class="wrap">
+      <a href="index.html" class="site-logo">LHMap 小店</a>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <input type="text" placeholder="搜索商品" />
+          <button type="button" class="btn-search" onclick="location.href='products.html'">搜索</button>
+        </div>
+        <a href="cart.html" class="topbar-cart">
+          购物车
+          <span class="badge js-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap">
-      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
       <nav class="site-nav">
         <a href="index.html">首页</a>
-        <a href="products.html">商品</a>
-        <a href="cart.html" aria-current="page">购物车 <span class="badge js-cart-count">0</span></a>
-        <a href="about.html">关于</a>
+        <a href="products.html">全部商品</a>
+        <a href="cart.html" aria-current="page">购物车</a>
+        <a href="about.html">关于我们</a>
       </nav>
     </div>
   </header>
 
   <main class="main wrap">
-    <h2 class="page-title">购物车</h2>
+    <span class="section-title">购物车</span>
     <div id="cartContent"></div>
-    <div class="totals card" id="cartTotals" style="max-width: 360px; margin-top: 1rem; display: none;"></div>
-    <p style="margin-top: 1rem;">
+    <div class="totals card" id="cartTotals" style="max-width: 360px; margin-top: 16px; display: none;"></div>
+    <p style="margin-top: 16px;">
       <a href="checkout.html" class="btn btn-primary" id="btnCheckout" style="display: none;">去结算</a>
       <a href="products.html" class="btn">继续购物</a>
     </p>
@@ -65,7 +80,7 @@
           '<tr data-id="' + p.id + '">' +
             '<td><a href="product.html?id=' + p.id + '">' + p.name + '</a></td>' +
             '<td>¥' + p.price + '</td>' +
-            '<td><div class="qty"><input type="number" value="' + qty + '" min="1" class="input js-qty" style="width:4rem;" data-id="' + p.id + '"></div></td>' +
+            '<td><div class="qty"><input type="number" value="' + qty + '" min="1" class="input js-qty" style="width:56px;" data-id="' + p.id + '"></div></td>' +
             '<td>¥' + sub + '</td>' +
             '<td><button type="button" class="btn btn-link btn-danger js-remove" data-id="' + p.id + '">删除</button></td>' +
           '</tr>';
@@ -73,7 +88,7 @@
       table += '</tbody></table>';
       content.innerHTML = table;
       totalsEl.style.display = 'block';
-      totalsEl.innerHTML = '<div class="row">共 <strong>' + totalQty + '</strong> 件</div><div class="row">合计 <strong>¥' + totalMoney + '</strong></div>';
+      totalsEl.innerHTML = '<div class="totals"><div class="row">共 <strong>' + totalQty + '</strong> 件</div><div class="row">合计 <strong>¥' + totalMoney + '</strong></div></div>';
       btnCheckout.style.display = 'inline-block';
       content.querySelectorAll('.js-qty').forEach(function (input) {
         input.addEventListener('change', function () {

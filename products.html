@@ -3,27 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品 - LHMap 小店</title>
+  <title>全部商品 - LHMap 小店</title>
   <link rel="stylesheet" href="css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="site-topbar">
+    <div class="wrap">
+      <a href="index.html" class="site-logo">LHMap 小店</a>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <input type="text" placeholder="搜索商品" id="topSearch" />
+          <button type="button" class="btn-search" onclick="location.href='products.html'">搜索</button>
+        </div>
+        <a href="cart.html" class="topbar-cart">
+          购物车
+          <span class="badge js-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap">
-      <h1 class="site-title"><a href="index.html">LHMap 小店</a></h1>
       <nav class="site-nav">
         <a href="index.html">首页</a>
-        <a href="products.html" aria-current="page">商品</a>
-        <a href="cart.html">购物车 <span class="badge js-cart-count">0</span></a>
-        <a href="about.html">关于</a>
+        <a href="products.html" aria-current="page">全部商品</a>
+        <a href="cart.html">购物车</a>
+        <a href="about.html">关于我们</a>
       </nav>
     </div>
   </header>
 
   <main class="main wrap">
-    <h2 class="page-title">全部商品</h2>
+    <span class="section-title">全部商品</span>
     <div class="products-grid" id="productsGrid"></div>
   </main>
 
@@ -43,14 +58,11 @@
         var card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML =
-          '<div class="thumb"></div>' +
+          '<a href="product.html?id=' + p.id + '" class="thumb"></a>' +
           '<div class="body">' +
             '<a href="product.html?id=' + p.id + '" class="name">' + p.name + '</a>' +
-            '<p class="desc">' + p.desc + '</p>' +
-            '<div class="price-row">' +
-              '<span class="price">¥' + p.price + '</span>' +
-              '<a href="product.html?id=' + p.id + '" class="btn btn-primary">加入购物车</a>' +
-            '</div>' +
+            '<span class="price">¥' + p.price + '</span>' +
+            '<a href="product.html?id=' + p.id + '" class="btn-add">加入购物车</a>' +
           '</div>';
         grid.appendChild(card);
       });
