@@ -11,3 +11,15 @@ window.PRODUCTS = [
 function getProductById(id) {
   return window.PRODUCTS.find(function (p) { return p.id === id; });
 }
+
+/**
+ * 商品图片：按商品 id 固定“随机图”
+ * 使用 picsum.photos 的 seed 机制，保证每个商品图片稳定，不会每次刷新都变
+ */
+function getProductImageUrl(id, size) {
+  var s = size == null ? 600 : Math.max(100, parseInt(size, 10) || 600);
+  var seed = 'lhmap-' + encodeURIComponent(String(id || 'unknown'));
+  return 'https://picsum.photos/seed/' + seed + '/' + s + '/' + s;
+}
+
+window.getProductImageUrl = getProductImageUrl;

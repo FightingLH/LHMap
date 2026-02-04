@@ -61,9 +61,10 @@
         el.innerHTML = '<p class="empty">未找到该商品。<a href="products.html">返回商品列表</a></p>';
         return;
       }
+      var img = (window.getProductImageUrl ? getProductImageUrl(p.id, 800) : '');
       el.innerHTML =
         '<article class="card" style="max-width: 640px;">' +
-          '<div class="thumb" style="aspect-ratio:1; border-radius: 4px; margin-bottom: 16px; background: #fafafa;"></div>' +
+          '<div class="thumb" style="aspect-ratio:1; border-radius: 4px; margin-bottom: 16px; background-image:url(\'' + img + '\'); background-color:#fafafa;"></div>' +
           '<header class="article-header">' +
             '<h2 class="title">' + p.name + '</h2>' +
             '<p class="meta">' + p.category + '</p>' +

@@ -31,6 +31,49 @@ body {
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
+  position: relative;
+}
+
+/* ========== 背景动效（轻量、不影响点击） ========== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: -30vmax;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.55;
+  transform: translate3d(0, 0, 0);
+}
+body::before {
+  background:
+    radial-gradient(closest-side at 20% 20%, rgba(255, 103, 0, 0.35), transparent 65%),
+    radial-gradient(closest-side at 80% 30%, rgba(255, 68, 0, 0.25), transparent 60%),
+    radial-gradient(closest-side at 60% 80%, rgba(255, 184, 120, 0.28), transparent 65%);
+  animation: bgFloat1 14s ease-in-out infinite alternate;
+}
+body::after {
+  background:
+    radial-gradient(closest-side at 30% 70%, rgba(255, 103, 0, 0.22), transparent 62%),
+    radial-gradient(closest-side at 90% 80%, rgba(255, 68, 0, 0.18), transparent 64%),
+    radial-gradient(closest-side at 70% 10%, rgba(255, 184, 120, 0.20), transparent 60%);
+  animation: bgFloat2 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgFloat1 {
+  from { transform: translate(-2%, -1%) scale(1); }
+  to   { transform: translate(2%, 1%) scale(1.04); }
+}
+@keyframes bgFloat2 {
+  from { transform: translate(2%, -1.5%) scale(1.02); }
+  to   { transform: translate(-2%, 1.5%) scale(1.06); }
+}
+
+/* 确保页面内容在动效层之上 */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -273,15 +316,27 @@ a:hover {
   aspect-ratio: 1;
   background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
   position: relative;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .product-card .thumb::after {
-  content: "商品图";
+  content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 12px;
   color: var(--text-muted);
+  opacity: 0.0;
+}
+
+/* 通用 thumb（商品详情页也会用） */
+.thumb {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .product-card .body {
   padding: 10px 12px;

@@ -57,14 +57,25 @@
       (window.PRODUCTS || []).forEach(function (p) {
         var card = document.createElement('div');
         card.className = 'product-card';
+        var img = (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '');
         card.innerHTML =
-          '<a href="product.html?id=' + p.id + '" class="thumb"></a>' +
+          '<a href="product.html?id=' + p.id + '" class="thumb" style="background-image:url(\'' + img + '\')"></a>' +
           '<div class="body">' +
             '<a href="product.html?id=' + p.id + '" class="name">' + p.name + '</a>' +
             '<span class="price">¥' + p.price + '</span>' +
-            '<a href="product.html?id=' + p.id + '" class="btn-add">加入购物车</a>' +
+            '<button type="button" class="btn-add js-add" data-id="' + p.id + '">加入购物车</button>' +
           '</div>';
         grid.appendChild(card);
+      });
+
+      grid.querySelectorAll('.js-add').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          addToCart(this.dataset.id, 1);
+          updateCartCount();
+          this.textContent = '已加入';
+          var t = this;
+          setTimeout(function () { t.textContent = '加入购物车'; }, 1000);
+        });
       });
     })();
   </script>

@@ -75,8 +75,9 @@
       list.forEach(function (p) {
         var card = document.createElement('div');
         card.className = 'product-card';
+        var img = (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '');
         card.innerHTML =
-          '<a href="product.html?id=' + p.id + '" class="thumb"></a>' +
+          '<a href="product.html?id=' + p.id + '" class="thumb" style="background-image:url(\'' + img + '\')"></a>' +
           '<div class="body">' +
             '<a href="product.html?id=' + p.id + '" class="name">' + p.name + '</a>' +
             '<span class="price">¥' + p.price + '</span>' +
