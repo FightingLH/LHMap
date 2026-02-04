@@ -3,48 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>全部商品 - 于洋 小店</title>
+  <title>全部商品 - 于洋小店</title>
   <link rel="stylesheet" href="css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="site-topbar">
-    <div class="wrap">
-      <a href="index.html" class="site-logo">于洋 小店</a>
-      <div class="topbar-right">
-        <div class="topbar-search">
-          <input type="text" placeholder="搜索商品" id="topSearch" />
-          <button type="button" class="btn-search" onclick="location.href='products.html'">搜索</button>
-        </div>
-        <a href="cart.html" class="topbar-cart">
-          购物车
-          <span class="badge js-cart-count">0</span>
-        </a>
+  <div class="tb-top-util">
+    <div class="tb-wrap">
+      <span class="tb-welcome">欢迎来到于洋小店</span>
+      <div class="tb-util-links">
+        <a href="index.html">首页</a>
+        <a href="products.html">全部商品</a>
+        <a href="cart.html">购物车</a>
+        <a href="about.html">关于我们</a>
       </div>
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="wrap">
-      <nav class="site-nav">
-        <a href="index.html">首页</a>
-        <a href="products.html" aria-current="page">全部商品</a>
-        <a href="cart.html">购物车</a>
-        <a href="about.html">关于我们</a>
-      </nav>
+  <header class="tb-header">
+    <div class="tb-wrap tb-header-inner">
+      <a href="index.html" class="tb-logo">于洋小店</a>
+      <div class="tb-search">
+        <input type="text" placeholder="搜索商品" />
+        <button type="button" class="tb-search-btn" onclick="location.href='products.html'">搜索</button>
+      </div>
+      <a href="cart.html" class="tb-cart">
+        购物车
+        <span class="tb-cart-badge js-cart-count">0</span>
+      </a>
     </div>
   </header>
 
-  <main class="main wrap">
-    <span class="section-title">全部商品</span>
-    <div class="products-grid" id="productsGrid"></div>
+  <nav class="tb-nav">
+    <div class="tb-wrap">
+      <a href="index.html" class="tb-nav-item">首页</a>
+      <a href="products.html" class="tb-nav-item" aria-current="page">全部商品</a>
+      <a href="cart.html" class="tb-nav-item">购物车</a>
+      <a href="about.html" class="tb-nav-item">关于我们</a>
+    </div>
+  </nav>
+
+  <main class="tb-main">
+    <section class="tb-content">
+      <div class="tb-wrap">
+        <h3 class="tb-section-title">全部商品</h3>
+        <div class="tb-products-grid" id="productsGrid"></div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>© 2025 于洋 小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <footer class="tb-footer">
+    <div class="tb-wrap">
+      <p>© 2025 于洋小店 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a></p>
     </div>
   </footer>
 
@@ -56,21 +68,20 @@
       var grid = document.getElementById('productsGrid');
       (window.PRODUCTS || []).forEach(function (p) {
         var card = document.createElement('div');
-        card.className = 'product-card';
+        card.className = 'tb-product-card';
         var imgUrl = (p.image || (window.getProductImageUrl ? getProductImageUrl(p.id, 600) : '')) || '';
         var imgAlt = (p.name || '商品') + ' 图片';
         card.innerHTML =
-          '<a href="product.html?id=' + p.id + '" class="thumb">' +
-            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.style.minHeight=\'120px\';this.onerror=null;this.alt=\'图片加载失败\';" />' +
+          '<a href="product.html?id=' + p.id + '" class="tb-product-thumb">' +
+            '<img src="' + imgUrl + '" alt="' + imgAlt.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.background=\'#e8e8e8\';this.onerror=null;" />' +
           '</a>' +
-          '<div class="body">' +
-            '<a href="product.html?id=' + p.id + '" class="name">' + p.name + '</a>' +
-            '<span class="price">¥' + p.price + '</span>' +
-            '<button type="button" class="btn-add js-add" data-id="' + p.id + '">加入购物车</button>' +
+          '<div class="tb-product-body">' +
+            '<a href="product.html?id=' + p.id + '" class="tb-product-name">' + p.name + '</a>' +
+            '<span class="tb-product-price">¥' + p.price + '</span>' +
+            '<button type="button" class="tb-product-btn js-add" data-id="' + p.id + '">加入购物车</button>' +
           '</div>';
         grid.appendChild(card);
       });
-
       grid.querySelectorAll('.js-add').forEach(function (btn) {
         btn.addEventListener('click', function () {
           addToCart(this.dataset.id, 1);
